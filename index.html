@@ -1,165 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Roman Early Careers</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Early career advising, resume reviews, and interview preparation.">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roman Early Careers</title>
+  <meta name="description" content="Early career advising, resume reviews, and interview preparation." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
-
-<!-- NAVBAR -->
-<nav class="navbar">
+  <!-- NAVIGATION -->
+  <nav class="navbar">
     <div class="container nav-inner">
-        <div class="nav-brand">
-            <img src="/images/roman.png" alt="Roman Early Careers Logo">
-            <span>Roman Early Careers</span>
-        </div>
+      <a class="nav-brand" href="#top" aria-label="Roman Early Careers home">
+        <img src="/images/roman.png" alt="Roman Early Careers Logo" />
+        <span>Roman Early Careers</span>
+      </a>
 
-        <ul class="nav-menu">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#consultation">Consultation</a></li>
-            <li><a href="#consultation" class="btn-primary-small">Get Started</a></li>
-        </ul>
+      <ul class="nav-menu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#consultation">Consultation</a></li>
+        <li><a href="#consultation" class="btn-primary-small">Get Started</a></li>
+      </ul>
+
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-</nav>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
+  <!-- HERO -->
+  <section id="top" class="hero">
     <div class="container">
+      <div class="hero-title-frame">
+        <img class="hero-title-logo" src="/images/roman.png" alt="Roman logo left" />
         <h1>Land Your First Serious Role</h1>
-        <p class="hero-subtitle">
-            Early-career guidance built for the current hiring market.
-        </p>
+        <img class="hero-title-logo" src="/images/roman2.png" alt="Roman logo right" />
+      </div>
 
-        <div class="hero-cta">
-            <a href="#services" class="btn-primary">View Services</a>
-            <a href="#consultation" class="btn-secondary">Free Consultation</a>
-        </div>
+      <p class="hero-subtitle">
+        Early-career guidance built for the current hiring market.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#services" class="btn-primary">View Services</a>
+        <a href="#consultation" class="btn-secondary">Free Consultation</a>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- SERVICES -->
-<section id="services" class="services">
+  <!-- SERVICES -->
+  <section id="services" class="services">
     <div class="container">
-        <h2 class="section-title">Services</h2>
-        <p class="section-subtitle">Clear help. No fluff.</p>
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">Clear help. No fluff.</p>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">Resume</div>
-                <h3>Resume Review</h3>
-                <div class="price">$49</div>
-                <p>Targeted resume feedback focused on ATS and hiring manager review.</p>
-            </div>
-
-            <div class="service-card featured">
-                <div class="service-icon">Interview</div>
-                <h3>Interview Prep</h3>
-                <div class="price">$149</div>
-                <p>Mock interviews with structured feedback and improvement plan.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">Mentorship</div>
-                <h3>Career Accelerator</h3>
-                <div class="price">$399</div>
-                <p>Multi-week guidance covering resumes, outreach, interviews, and offers.</p>
-            </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">Resume</div>
+          <h3>Resume Review</h3>
+          <div class="price">$49</div>
+          <ul class="service-features">
+            <li>1-on-1 review call</li>
+            <li>Written feedback</li>
+            <li>ATS optimization</li>
+          </ul>
+          <a href="#consultation" class="btn-service">Get Started</a>
         </div>
-    </div>
-</section>
 
-<!-- CONSULTATION -->
-<section id="consultation" class="consultation">
+        <div class="service-card featured">
+          <div class="badge">Most Popular</div>
+          <div class="service-icon">Interview</div>
+          <h3>Interview Prep</h3>
+          <div class="price">$149</div>
+          <ul class="service-features">
+            <li>Mock interview sessions</li>
+            <li>Behavioral + technical practice</li>
+            <li>Personal feedback plan</li>
+          </ul>
+          <a href="#consultation" class="btn-service">Get Started</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">Mentorship</div>
+          <h3>Career Accelerator</h3>
+          <div class="price">$399</div>
+          <ul class="service-features">
+            <li>Multi-week guidance</li>
+            <li>LinkedIn + outreach strategy</li>
+            <li>Offer planning</li>
+          </ul>
+          <a href="#consultation" class="btn-service">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTATION (FORM + CALENDLY) -->
+  <section id="consultation" class="consultation">
     <div class="container">
-        <h2 class="section-title">Free Consultation</h2>
-        <p class="section-subtitle">
-            Fill out the form or book directly on the calendar.
-        </p>
+      <h2 class="section-title">Free Consultation</h2>
+      <p class="section-subtitle">Fill out the form or book directly on the calendar.</p>
 
-        <div class="consultation-grid">
+      <div class="consultation-grid">
+        <!-- Netlify Form -->
+        <div class="consultation-form">
+          <form
+            name="consultation"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/thank-you.html"
+            class="contact-form"
+          >
+            <input type="hidden" name="form-name" value="consultation" />
+            <p class="hidden">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
 
-            <!-- NETLIFY FORM -->
-            <div class="consultation-form">
-                <form
-                    name="consultation"
-                    method="POST"
-                    data-netlify="true"
-                    netlify-honeypot="bot-field">
-
-                    <input type="hidden" name="form-name" value="consultation">
-
-                    <p class="hidden">
-                        <label>Don’t fill this out <input name="bot-field"></label>
-                    </p>
-
-                    <label>
-                        Name
-                        <input type="text" name="name" required>
-                    </label>
-
-                    <label>
-                        Email
-                        <input type="email" name="email" required>
-                    </label>
-
-                    <label>
-                        Service Interested In
-                        <select name="service" required>
-                            <option value="">Select a service</option>
-                            <option value="Resume Review">Resume Review</option>
-                            <option value="Interview Prep">Interview Prep</option>
-                            <option value="Career Accelerator">Career Accelerator</option>
-                            <option value="Not Sure">Not Sure Yet</option>
-                        </select>
-                    </label>
-
-                    <label>
-                        Additional Comments
-                        <textarea name="comments" rows="4"></textarea>
-                    </label>
-
-                    <button type="submit" class="btn-primary">
-                        Submit Request
-                    </button>
-                </form>
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input id="name" type="text" name="name" required />
             </div>
 
-            <!-- CALENDLY -->
-            <div class="consultation-calendar">
-                <div
-                    class="calendly-inline-widget"
-                    data-url="https://calendly.com/your-link"
-                    style="min-width:320px;height:650px;">
-                </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input id="email" type="email" name="email" required />
             </div>
 
+            <div class="form-group">
+              <label for="service">Service Interested In *</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="Resume Review">Resume Review</option>
+                <option value="Interview Prep">Interview Prep</option>
+                <option value="Career Accelerator">Career Accelerator</option>
+                <option value="Not Sure Yet">Not Sure Yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="comments">Additional Comments</label>
+              <textarea id="comments" name="comments" rows="4" placeholder="Tell me what you're applying for and what you want help with."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Submit Request</button>
+          </form>
         </div>
+
+        <!-- Calendly embed -->
+        <div class="consultation-calendar">
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/your-link"
+            style="min-width: 320px; height: 650px;"
+          ></div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="container footer-inner">
-        <div>
-            <strong>Roman Early Careers</strong>
-            <p>Early-career advising and interview prep.</p>
-        </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>Roman Early Careers</h3>
+        <p>Early-career advising, resumes, and interview prep.</p>
+      </div>
 
-        <ul class="footer-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#consultation">Consultation</a></li>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#consultation">Consultation</a></li>
+          <li><a href="#top">Top</a></li>
         </ul>
+      </div>
     </div>
 
     <div class="footer-bottom">
-        © 2026 Roman Early Careers
+      <p>&copy; 2026 Roman Early Careers. All rights reserved.</p>
     </div>
-</footer>
+  </footer>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script src="script.js"></script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
