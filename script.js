@@ -137,4 +137,36 @@ document.querySelectorAll('.btn-service').forEach((btn) => {
   });
 });
 
+const form = document.getElementById('consultation-form');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        window.location.href = 'thank-you.html';
+      } else {
+        alert('Something went wrong. Please try again.');
+        btn.disabled = false;
+        btn.textContent = 'Send';
+      }
+    } catch {
+      alert('Network error. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Send';
+    }
+  });
+}
+
 }
