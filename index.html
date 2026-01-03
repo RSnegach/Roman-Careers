@@ -351,10 +351,9 @@
   method="POST"
   action="https://formspree.io/f/maqnpeye"
 >
-  <input type="hidden" name="_subject"
-         value="New Roman Early Careers Consultation Request" />
+  <input type="hidden" name="_subject" value="New Roman Early Careers Consultation Request" />
 
-  <!-- spam honeypot -->
+  <!-- Honeypot (spam trap) -->
   <p class="hidden">
     <label>Don’t fill this out: <input name="_gotcha" /></label>
   </p>
@@ -373,23 +372,27 @@
     <label for="service">Service Interested In *</label>
     <select id="service" name="service" required>
       <option value="">Select a service</option>
-      <option value="Resume Package">Resume Review</option>
-      <option value="Interview Package">Interview Prep</option>
-      <option value="Career Package">Career Accelerator</option>
-      <option value="Peer Workshops">Group Workshops</option>
+      <option value="Resume Review">Resume Review</option>
+      <option value="Interview Prep">Interview Prep</option>
+      <option value="Career Accelerator">Career Accelerator</option>
+      <option value="Group Workshops">Group Workshops</option>
       <option value="Not Sure Yet">Not Sure Yet</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="comments">Comments</label>
-    <textarea id="comments" name="comments" rows="5"
-      placeholder="What are you applying for and what do you want help with?">
-    </textarea>
+    <textarea
+      id="comments"
+      name="comments"
+      rows="5"
+      placeholder="What are you applying for and what do you want help with?"
+    ></textarea>
   </div>
 
   <button type="submit" class="btn-primary">Send</button>
 </form>
+
 
 
           <p class="fineprint">If you already booked a time, the form helps me prep so we can move faster.</p>
