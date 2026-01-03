@@ -39,10 +39,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    - Delete any other submit handlers (especially old Netlify UX)
 ============================================================ */
 const consultationForm = document.getElementById('consultation-form');
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqnpeye';
 
 if (consultationForm) {
   consultationForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // prevents POSTing to thank-you.html (405)
+    e.preventDefault();
 
     const btn = consultationForm.querySelector('button[type="submit"]');
     const originalText = btn ? btn.textContent : 'Send';
@@ -53,27 +54,25 @@ if (consultationForm) {
     }
 
     try {
-      const res = await fetch(consultationForm.action, {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         body: new FormData(consultationForm),
         headers: { Accept: 'application/json' },
       });
 
       if (!res.ok) {
-        // Try to surface Formspree error details
         let detail = '';
         try {
           const data = await res.json();
           detail = data?.errors?.map(e => e.message).join(' ') || '';
         } catch {}
-        throw new Error(`Formspree returned ${res.status}. ${detail}`.trim());
+        throw new Error(`Formspree ${res.status}: ${detail}`);
       }
 
-      // Success: client-side redirect (free tier compatible)
       window.location.href = 'thank-you.html';
     } catch (err) {
-      console.error(err);
-      alert(`Submit failed: ${err.message || err}`);
+      console.error('[Formspree error]', err);
+      alert('Submit failed. Check console for details.');
 
       if (btn) {
         btn.disabled = false;
@@ -82,6 +81,7 @@ if (consultationForm) {
     }
   });
 }
+
 
 // ===== Count animation helper =====
 function animateNumber(el, from, to, durationMs, suffix = '') {
