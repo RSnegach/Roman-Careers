@@ -121,8 +121,75 @@
           </a>
 
           <a class="btn-rocket" href="https://www.blueorigin.com/new-glenn" target="_blank" rel="noopener noreferrer" aria-label="Check out where I work (Blue Origin New Glenn)">
-            <span class="rocket-text">Check Out Where I Work!</span>
-          </a>
+  <span class="rocket-graphic" aria-hidden="true">
+    <svg class="rocket-svg" viewBox="0 0 220 64" role="presentation" focusable="false">
+      <!-- engine plume -->
+      <defs>
+        <linearGradient id="plumeGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#00b7ff" stop-opacity="0.95"/>
+          <stop offset="55%" stop-color="#ffb100" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#ff5a00" stop-opacity="0.95"/>
+        </linearGradient>
+        <linearGradient id="bodyShade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#e9eef5"/>
+        </linearGradient>
+        <filter id="softGlow" x="-30%" y="-60%" width="160%" height="220%">
+          <feGaussianBlur stdDeviation="1.6" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <g class="plume" filter="url(#softGlow)">
+        <path d="M10 32
+                 C 2 22, 2 42, 10 32
+                 C 20 20, 24 26, 30 32
+                 C 24 38, 20 44, 10 32 Z"
+              fill="url(#plumeGrad)" opacity="0.9"/>
+        <path d="M14 32
+                 C 8 26, 8 38, 14 32
+                 C 20 26, 22 29, 26 32
+                 C 22 35, 20 38, 14 32 Z"
+              fill="#9be7ff" opacity="0.6"/>
+      </g>
+
+      <!-- rocket body (stylized New Glenn, sideways) -->
+      <!-- engine bell -->
+      <path d="M34 26 L46 26 L52 32 L46 38 L34 38 Z" fill="#1b2a41" opacity="0.95"/>
+      <rect x="50" y="22" width="10" height="20" rx="6" fill="#0b3b76" opacity="0.95"/>
+
+      <!-- first stage / core -->
+      <rect x="58" y="14" width="118" height="36" rx="18" fill="url(#bodyShade)" stroke="#0b1220" stroke-opacity="0.18" />
+
+      <!-- booster skirt + fins -->
+      <path d="M64 50 L78 50 L72 60 L58 60 Z" fill="#c9a15b" opacity="0.95"/>
+      <path d="M64 14 L78 14 L72 4  L58 4  Z" fill="#c9a15b" opacity="0.95"/>
+
+      <!-- blue origin blue band -->
+      <rect x="92" y="18" width="30" height="28" rx="10" fill="#0A66C2" opacity="0.95"/>
+      <rect x="124" y="18" width="6" height="28" rx="3" fill="#0A66C2" opacity="0.95"/>
+
+      <!-- nose cone -->
+      <path d="M176 14
+               L208 32
+               L176 50
+               Q168 32 176 14 Z"
+            fill="url(#bodyShade)" stroke="#0b1220" stroke-opacity="0.18"/>
+
+      <!-- subtle window -->
+      <circle cx="84" cy="32" r="4.6" fill="#0b1220" opacity="0.55"/>
+      <circle cx="84" cy="32" r="2.3" fill="#ffffff" opacity="0.85"/>
+
+      <!-- outline -->
+      <path d="M58 14 h118 a18 18 0 0 1 0 36 h-118 a18 18 0 0 1 0-36 Z"
+            fill="none" stroke="#0b1220" stroke-opacity="0.20"/>
+    </svg>
+  </span>
+  <span class="rocket-text">Check Out Where I Work!</span>
+</a>
         </div>
 
         <div class="about-content">
@@ -298,10 +365,10 @@
               <label for="service">Service Interested In *</label>
               <select id="service" name="service" required>
                 <option value="">Select a service</option>
-                <option value="Resume Review">Resume Review</option>
-                <option value="Interview Prep">Interview Prep</option>
-                <option value="Career Accelerator">Career Accelerator</option>
-                <option value="Group Workshops">Group Workshops</option>
+                <option value="Resume Package">Resume Review</option>
+                <option value="Interview Package">Interview Prep</option>
+                <option value="Career Package">Career Accelerator</option>
+                <option value="Peer Workshops">Group Workshops</option>
                 <option value="Not Sure Yet">Not Sure Yet</option>
               </select>
             </div>
