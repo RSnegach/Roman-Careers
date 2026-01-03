@@ -28,7 +28,6 @@ body {
 }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
 .hidden { display: none; }
 
 /* ===== NAV ===== */
@@ -75,7 +74,7 @@ body {
 .nav-menu a {
   text-decoration: none;
   color: var(--dark);
-  font-weight: 600;
+  font-weight: 700;
   transition: color 0.2s ease;
 }
 
@@ -142,7 +141,6 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  /* match “logo black” look */
   background:
     radial-gradient(1200px 500px at 50% 35%, rgba(255,255,255,0.08), rgba(0,0,0,0) 55%),
     linear-gradient(180deg, #0b0b0b 0%, #000000 100%);
@@ -316,28 +314,35 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* ===== CONSULTATION ===== */
-.consultation {
+/* ===== BOOK NOW ===== */
+.book-now {
   padding: 5rem 0;
   background: var(--white);
 }
 
-.consultation-grid {
+.book-now-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 2rem;
   align-items: start;
 }
 
-.consultation-form {
+.book-now-card {
   background: var(--light-gray);
-  padding: 2rem;
+  padding: 1.25rem;
   border-radius: 14px;
   box-shadow: var(--shadow);
 }
 
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+
 .contact-form .form-group {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.1rem;
 }
 
 .contact-form label {
@@ -365,11 +370,10 @@ body {
   border-color: var(--primary);
 }
 
-.consultation-calendar {
-  background: var(--light-gray);
-  padding: 1rem;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
+.fineprint {
+  margin-top: 0.9rem;
+  color: var(--gray);
+  font-size: 0.95rem;
 }
 
 /* ===== FOOTER ===== */
@@ -416,6 +420,12 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .book-now-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .hamburger { display: flex; }
 
@@ -434,17 +444,3 @@ body {
   }
 
   .nav-menu.active { left: 0; }
-
-  .hero-title-frame {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .hero-title-logo { height: 52px; }
-
-  .hero h1 { font-size: 2.1rem; }
-
-  .consultation-grid { grid-template-columns: 1fr; }
-
-  .footer-content { grid-template-columns: 1fr; }
-}
