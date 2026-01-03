@@ -57,7 +57,7 @@ function animateNumber(el, from, to, durationMs, suffix = '') {
 
   function step(now) {
     const t = Math.min(1, (now - start) / durationMs);
-    const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+    const eased = 1 - Math.pow(1 - t, 3);
     const value = Math.round(from + range * eased);
     el.textContent = `${value}${suffix}`;
     if (t < 1) requestAnimationFrame(step);
@@ -71,18 +71,14 @@ function animateNumber(el, from, to, durationMs, suffix = '') {
   const consultationsEl = document.getElementById('consultationsCount');
   const interviewsEl = document.getElementById('interviewsCount');
 
-  // visits
   const visitsKey = 'rec_site_visits_v1';
   let visits = parseInt(localStorage.getItem(visitsKey) || '0', 10);
   visits += 1;
   localStorage.setItem(visitsKey, String(visits));
 
-  // Consultations Booked: start 57, +1 per 10 visits (per browser)
   const baseConsultations = 57;
-  const consultIncrements = Math.floor(visits / 10);
-  const consultations = baseConsultations + consultIncrements;
+  const consultations = baseConsultations + Math.floor(visits / 10);
 
-  // Interviews Secured: starts at 19+
   const interviews = 19;
 
   const currentConsult = parseInt((consultationsEl?.textContent || '0').replace(/\D/g, ''), 10) || 0;
