@@ -16,6 +16,10 @@
   --linkedin: #0A66C2;
   --linkedin-dark: #004182;
 
+  --diamond: #19d3d3;
+  --diamond-dark: #0b8f9a;
+  --diamond-deep: #064d54;
+
   --danger: #dc2626;
   --green: #16a34a;
 
@@ -180,103 +184,97 @@ body {
   box-shadow: var(--shadow);
 }
 
-/* ===== BLUE ORIGIN ROCKET BUTTON ===== */
+/* ===== BLUE ORIGIN ROCKET BUTTON (New Glenn) ===== */
 .btn-rocket {
   width: 100%;
   margin-top: 0.7rem;
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  gap: 0.85rem;
   justify-content: center;
-  gap: 0.6rem;
-  padding: 0.9rem 1.1rem;
+
+  padding: 0.85rem 1.1rem;
   text-decoration: none;
   font-weight: 900;
   letter-spacing: 0.02em;
   color: var(--white);
-  background: linear-gradient(135deg, #0b1220 0%, #111827 55%, #0b1220 100%);
+
+  background: radial-gradient(160% 180% at 30% 40%, rgba(255,255,255,0.08), rgba(255,255,255,0) 55%),
+              linear-gradient(135deg, #050812 0%, #0b1220 55%, #050812 100%);
   border: 2px solid rgba(255,255,255,0.18);
-  border-radius: 14px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+
   position: relative;
   overflow: hidden;
 
-  /* sideways rocket silhouette */
-  clip-path: polygon(0 22%, 8% 0, 84% 0, 100% 50%, 84% 100%, 8% 100%, 0 78%);
-  box-shadow: var(--shadow);
+  /* rocket-shaped button (nose to the right) */
+  clip-path: polygon(0 26%, 7% 0, 84% 0, 100% 50%, 84% 100%, 7% 100%, 0 74%);
 }
 
-.btn-rocket::before {
-  /* "window" */
-  content: "";
-  position: absolute;
-  left: 16%;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.12), 0 0 18px rgba(255,255,255,0.25);
+.rocket-graphic {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35));
 }
 
-.btn-rocket::after {
-  /* flame */
-  content: "";
-  position: absolute;
-  left: -18px;
-  top: 50%;
-  width: 26px;
-  height: 18px;
-  transform: translateY(-50%);
-  border-radius: 10px 0 0 10px;
-  background: linear-gradient(90deg, rgba(255,200,0,0.0) 0%, rgba(255,200,0,0.8) 55%, rgba(255,90,0,0.95) 100%);
-  filter: blur(0.2px);
-  opacity: 0.75;
+.rocket-svg {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
-.btn-rocket .rocket-text {
+.rocket-text {
   position: relative;
   z-index: 2;
   text-shadow:
     -1px -1px 0 #000,
      1px -1px 0 #000,
     -1px  1px 0 #000,
-     1px  1px 0 #000;
+     1px  1px 0 #000,
+     0   6px 14px rgba(0,0,0,0.35);
 }
 
-/* subtle star sheen */
-.btn-rocket .rocket-text::after {
+/* subtle moving "stars" sheen */
+.btn-rocket::before {
   content: "";
   position: absolute;
-  inset: -14px -22px;
+  inset: -40px -60px;
   background:
-    radial-gradient(circle at 15% 45%, rgba(255,255,255,0.35) 0 2px, rgba(255,255,255,0) 3px),
-    radial-gradient(circle at 70% 25%, rgba(255,255,255,0.25) 0 2px, rgba(255,255,255,0) 3px),
-    radial-gradient(circle at 55% 75%, rgba(255,255,255,0.20) 0 2px, rgba(255,255,255,0) 3px);
-  opacity: 0.18;
+    radial-gradient(circle at 12% 30%, rgba(255,255,255,0.18) 0 2px, rgba(255,255,255,0) 3px),
+    radial-gradient(circle at 38% 65%, rgba(255,255,255,0.14) 0 2px, rgba(255,255,255,0) 3px),
+    radial-gradient(circle at 68% 35%, rgba(255,255,255,0.16) 0 2px, rgba(255,255,255,0) 3px),
+    radial-gradient(circle at 86% 72%, rgba(255,255,255,0.12) 0 2px, rgba(255,255,255,0) 3px);
+  opacity: 0.55;
+  transform: translateX(-8px);
+  transition: transform 650ms ease;
   pointer-events: none;
 }
 
-/* hover: lift + slight tilt + flame flicker */
-@keyframes rocketWiggle {
-  0% { transform: translateX(0) rotate(0deg); }
-  30% { transform: translateX(6px) rotate(-1deg); }
-  60% { transform: translateX(10px) rotate(1deg); }
-  100% { transform: translateX(6px) rotate(0deg); }
+/* hover: liftoff + animated plume */
+@keyframes plumeFlicker {
+  0%, 100% { transform: translateX(0) scaleX(1) scaleY(1); opacity: 0.92; }
+  35% { transform: translateX(-1.2px) scaleX(1.22) scaleY(0.95); opacity: 1; }
+  70% { transform: translateX(-0.6px) scaleX(1.08) scaleY(1.05); opacity: 0.96; }
 }
 
-@keyframes flameFlicker {
-  0%, 100% { transform: translateY(-50%) scaleX(1); opacity: 0.75; }
-  40% { transform: translateY(-50%) scaleX(1.35); opacity: 0.95; }
-  70% { transform: translateY(-50%) scaleX(1.15); opacity: 0.85; }
+@keyframes rocketDrift {
+  0% { transform: translateX(0) rotate(0deg); }
+  45% { transform: translateX(8px) rotate(-0.8deg); }
+  100% { transform: translateX(12px) rotate(0.6deg); }
 }
 
 .btn-rocket:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.06);
   box-shadow: var(--shadow-lg);
-  animation: rocketWiggle 520ms ease-in-out both;
 }
 
-.btn-rocket:hover::after {
-  animation: flameFlicker 220ms ease-in-out infinite;
-}
+.btn-rocket:hover::before { transform: translateX(18px); }
+
+.btn-rocket:hover .rocket-svg { animation: rocketDrift 520ms ease-in-out both; }
+.btn-rocket:hover .plume { animation: plumeFlicker 190ms ease-in-out infinite; transform-origin: 34px 32px; }
 
 /* ===== HERO ===== */
 .hero {
@@ -515,12 +513,35 @@ body {
 /* ===== SERVICE TIERS (solid fills + outlined text) ===== */
 .service-card.tier-bronze { background: var(--bronze); border: 2px solid var(--bronze-dark); }
 .service-card.tier-gold { background: var(--gold); border: 2px solid var(--gold-dark); }
-.service-card.tier-platinum { background: var(--platinum-dark); border: 2px solid #b9b9b9; }
+.service-card.tier-platinum { background: linear-gradient(135deg, var(--diamond) 0%, var(--diamond-dark) 55%, var(--diamond-deep) 100%); border: 2px solid rgba(255,255,255,0.35); }
 
 .service-card.tier-bronze,
 .service-card.tier-gold,
 .service-card.tier-platinum {
   color: var(--white);
+}
+
+/* Diamond facets overlay for the "platinum" (now diamond-teal) card */
+.service-card.tier-platinum::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.10) 0 10px, rgba(255,255,255,0.00) 10px 22px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,0.08) 0 12px, rgba(255,255,255,0.00) 12px 26px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.service-card.tier-platinum > * { position: relative; z-index: 1; }
+
+/* Make the "Most Popular" badge readable on a gold card */
+.service-card.tier-gold.featured .badge {
+  background: rgba(0,0,0,0.75);
+  color: var(--white);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  text-shadow: none;
 }
 
 .service-card.tier-bronze h3,
@@ -571,14 +592,6 @@ body {
 .service-card.tier-gold .service-icon,
 .service-card.tier-platinum .service-icon {
   color: rgba(255,255,255,0.95);
-}
-
-/* Make the "Most Popular" badge readable on a gold card */
-.service-card.tier-gold.featured .badge {
-  background: rgba(0,0,0,0.75);
-  color: var(--white);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-  text-shadow: none;
 }
 
 .badge {
