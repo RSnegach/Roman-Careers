@@ -137,36 +137,50 @@ document.querySelectorAll('.btn-service').forEach((btn) => {
   });
 });
 
-const form = document.getElementById('consultation-form');
+// ===== Formspree submit (GitHub Pages safe) =====
+const consultationForm = document.getElementById('consultation-form');
 
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+if (consultationForm) {
+  consultationForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // prevents POST navigation to GitHub Pages (fixes 405)
 
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
+    const btn = consultationForm.querySelector('button[type="submit"]');
+    const originalText = btn ? btn.textContent : 'Send';
+
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+    }
 
     try {
-      const response = await fetch(form.action, {
+      const res = await fetch(consultationForm.action, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        body: new FormData(consultationForm),
+        headers: { Accept: 'application/json' },
       });
 
-      if (response.ok) {
-        window.location.href = 'thank-you.html';
-      } else {
-        alert('Something went wrong. Please try again.');
-        btn.disabled = false;
-        btn.textContent = 'Send';
+      if (res.ok) {
+        // This is a GET request (works on GitHub Pages)
+        window.location.assign('thank-you.html');
+        return;
       }
-    } catch {
+
+      // If Formspree rejects
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+      alert('Submission failed. Please try again.');
+    } catch (err) {
+      // Network / blocked / offline
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
       alert('Network error. Please try again.');
-      btn.disabled = false;
-      btn.textContent = 'Send';
     }
   });
 }
+
 
 }
