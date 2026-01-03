@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Roman Early Careers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roman Early Career Accelerator</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
@@ -11,15 +11,15 @@
 
 <nav class="navbar">
     <div class="container">
-        <div class="nav-brand">Roman Early Career Accelerator</div>
+        <div class="nav-brand">
+            <img src="images/logo.png" alt="Roman Early Careers Logo">
+            <span>Roman Early Careers</span>
+        </div>
+
         <ul class="nav-menu">
-            <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact" class="btn-primary-small">Get Started</a></li>
         </ul>
-        <div class="hamburger">
-            <span></span><span></span><span></span>
-        </div>
     </div>
 </nav>
 
@@ -27,22 +27,9 @@
     <div class="container">
         <h1>Land Your First Serious Role</h1>
         <p class="hero-subtitle">
-            Resume strategy, interview prep, and early-career guidance that actually works.
+            Early-career guidance built for the current hiring market.
         </p>
-        <div class="hero-stats">
-            <div>
-                <div class="stat-number">4+</div>
-                <div class="stat-label">Competitive Co-ops</div>
-            </div>
-            <div>
-                <div class="stat-number">3.95</div>
-                <div class="stat-label">GPA</div>
-            </div>
-            <div>
-                <div class="stat-number">Blue Origin</div>
-                <div class="stat-label">Current Role</div>
-            </div>
-        </div>
+
         <div class="hero-cta">
             <a href="#services" class="btn-primary">View Services</a>
             <a href="#contact" class="btn-secondary">Free Consultation</a>
@@ -50,44 +37,16 @@
     </div>
 </section>
 
-<section id="about" class="about">
-    <div class="container">
-        <div class="about-grid">
-            <img src="images/roman.png" alt="Career Coach" class="about-photo">
-            <div>
-                <h2>About</h2>
-                <p class="lead">
-                    I recently navigated the same hiring market you're facing now.
-                </p>
-                <ul class="check-list">
-                    <li>Resume systems that pass ATS filters</li>
-                    <li>Interview frameworks that reduce randomness</li>
-                    <li>Real strategies for early-career leverage</li>
-                </ul>
-                <div class="credentials">
-                    <strong>Background</strong>
-                    <p>B.S. Physics & Mechanical Engineering · Test Engineer · Blue Origin</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section id="services" class="services">
     <div class="container">
         <h2 class="section-title">Services</h2>
-        <p class="section-subtitle">Clear, focused help — no fluff</p>
+        <p class="section-subtitle">Clear help. No fluff.</p>
 
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">Resume</div>
                 <h3>Resume Review</h3>
                 <div class="price">$49</div>
-                <ul class="service-features">
-                    <li>1-on-1 review call</li>
-                    <li>Written feedback</li>
-                    <li>ATS optimization</li>
-                </ul>
                 <a href="#contact" class="btn-service">Get Started</a>
             </div>
 
@@ -95,11 +54,6 @@
                 <div class="service-icon">Interview</div>
                 <h3>Interview Prep</h3>
                 <div class="price">$149</div>
-                <ul class="service-features">
-                    <li>3 mock interviews</li>
-                    <li>Behavioral + technical</li>
-                    <li>Personal feedback doc</li>
-                </ul>
                 <a href="#contact" class="btn-service">Get Started</a>
             </div>
 
@@ -107,11 +61,6 @@
                 <div class="service-icon">Mentorship</div>
                 <h3>Career Accelerator</h3>
                 <div class="price">$399</div>
-                <ul class="service-features">
-                    <li>5 weeks of guidance</li>
-                    <li>LinkedIn + outreach</li>
-                    <li>Offer strategy</li>
-                </ul>
                 <a href="#contact" class="btn-service">Get Started</a>
             </div>
         </div>
@@ -122,42 +71,18 @@
     <div class="container">
         <h2 class="section-title">Free Consultation</h2>
 
-        <div class="contact-grid">
-            <div>
-                <p>
-                    Book a 15-minute call to see if this is a fit.
-                </p>
-                <div class="contact-method">
-                    <strong>Schedule a Call</strong>
-                    <a
-                      href="https://calendly.com/your-link"
-                      target="_blank"
-                      class="btn-secondary">
-                        Open Calendly
-                    </a>
-                </div>
-            </div>
-
-            <form name="contact" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="contact">
-                <label>Name</label>
-                <input type="text" name="name" required>
-                <label>Email</label>
-                <input type="email" name="email" required>
-                <button class="btn-primary" type="submit">Send</button>
-            </form>
-        </div>
+        <a
+          href="https://calendly.com/your-link"
+          target="_blank"
+          class="btn-primary">
+            Schedule a Call
+        </a>
     </div>
 </section>
 
 <footer class="footer">
-    <div class="container">
-        <div class="footer-bottom">
-            © 2026 Roman Early Career Accelerator
-        </div>
-    </div>
+    © 2026 Roman Early Careers
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
