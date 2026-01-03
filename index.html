@@ -345,47 +345,52 @@
         <div class="book-now-card">
           <h3 class="card-title">Consultation Request</h3>
 
-          <form name="consultation"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                action="/thank-you.html"
-                class="contact-form">
-            <input type="hidden" name="form-name" value="consultation" />
-            <p class="hidden">
-              <label>Don't fill this out: <input name="bot-field" /></label>
-            </p>
+          <form
+  id="consultation-form"
+  class="contact-form"
+  method="POST"
+  action="https://formspree.io/f/maqnpeye"
+>
+  <input type="hidden" name="_subject"
+         value="New Roman Early Careers Consultation Request" />
 
-            <div class="form-group">
-              <label for="name">Name *</label>
-              <input type="text" id="name" name="name" required />
-            </div>
+  <!-- spam honeypot -->
+  <p class="hidden">
+    <label>Don’t fill this out: <input name="_gotcha" /></label>
+  </p>
 
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required />
-            </div>
+  <div class="form-group">
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" required />
+  </div>
 
-            <div class="form-group">
-              <label for="service">Service Interested In *</label>
-              <select id="service" name="service" required>
-                <option value="">Select a service</option>
-                <option value="Resume Package">Resume Review</option>
-                <option value="Interview Package">Interview Prep</option>
-                <option value="Career Package">Career Accelerator</option>
-                <option value="Peer Workshops">Group Workshops</option>
-                <option value="Not Sure Yet">Not Sure Yet</option>
-              </select>
-            </div>
+  <div class="form-group">
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required />
+  </div>
 
-            <div class="form-group">
-              <label for="comments">Comments</label>
-              <textarea id="comments" name="comments" rows="5"
-                        placeholder="What are you applying for and what do you want help with?"></textarea>
-            </div>
+  <div class="form-group">
+    <label for="service">Service Interested In *</label>
+    <select id="service" name="service" required>
+      <option value="">Select a service</option>
+      <option value="Resume Package">Resume Review</option>
+      <option value="Interview Package">Interview Prep</option>
+      <option value="Career Package">Career Accelerator</option>
+      <option value="Peer Workshops">Group Workshops</option>
+      <option value="Not Sure Yet">Not Sure Yet</option>
+    </select>
+  </div>
 
-            <button type="submit" class="btn-primary">Send</button>
-          </form>
+  <div class="form-group">
+    <label for="comments">Comments</label>
+    <textarea id="comments" name="comments" rows="5"
+      placeholder="What are you applying for and what do you want help with?">
+    </textarea>
+  </div>
+
+  <button type="submit" class="btn-primary">Send</button>
+</form>
+
 
           <p class="fineprint">If you already booked a time, the form helps me prep so we can move faster.</p>
         </div>
@@ -431,8 +436,5 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
-
-
-
 
 
