@@ -122,4 +122,19 @@ if ('IntersectionObserver' in window) {
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
   });
+
+  // ===== Button shine: trigger per-button, not "sticky hover" =====
+document.querySelectorAll('.btn-service').forEach((btn) => {
+  btn.addEventListener('mouseenter', () => {
+    // restart animation cleanly
+    btn.classList.remove('shine');
+    // force reflow so animation restarts reliably
+    void btn.offsetWidth;
+    btn.classList.add('shine');
+
+    // remove after animation finishes
+    window.setTimeout(() => btn.classList.remove('shine'), 650);
+  });
+});
+
 }
