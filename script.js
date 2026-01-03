@@ -57,8 +57,7 @@ function animateNumber(el, from, to, durationMs, suffix = '') {
 
   function step(now) {
     const t = Math.min(1, (now - start) / durationMs);
-    // easeOutCubic
-    const eased = 1 - Math.pow(1 - t, 3);
+    const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
     const value = Math.round(from + range * eased);
     el.textContent = `${value}${suffix}`;
     if (t < 1) requestAnimationFrame(step);
@@ -67,8 +66,7 @@ function animateNumber(el, from, to, durationMs, suffix = '') {
   requestAnimationFrame(step);
 }
 
-// ===== Landing page counters =====
-// FREE version: per-browser via localStorage
+// ===== Landing page counters (FREE version: per-browser via localStorage) =====
 (function setupHeroCounters() {
   const consultationsEl = document.getElementById('consultationsCount');
   const interviewsEl = document.getElementById('interviewsCount');
@@ -79,7 +77,7 @@ function animateNumber(el, from, to, durationMs, suffix = '') {
   visits += 1;
   localStorage.setItem(visitsKey, String(visits));
 
-  // Consultations Booked: start at 57, increment +1 per 10 visits (per browser)
+  // Consultations Booked: start 57, +1 per 10 visits (per browser)
   const baseConsultations = 57;
   const consultIncrements = Math.floor(visits / 10);
   const consultations = baseConsultations + consultIncrements;
@@ -87,7 +85,6 @@ function animateNumber(el, from, to, durationMs, suffix = '') {
   // Interviews Secured: starts at 19+
   const interviews = 19;
 
-  // animate on load
   const currentConsult = parseInt((consultationsEl?.textContent || '0').replace(/\D/g, ''), 10) || 0;
   const currentInterviews = parseInt((interviewsEl?.textContent || '0').replace(/\D/g, ''), 10) || 0;
 
@@ -95,36 +92,18 @@ function animateNumber(el, from, to, durationMs, suffix = '') {
   animateNumber(interviewsEl, Math.min(currentInterviews, interviews), interviews, 750, '+');
 })();
 
-// ===== Company cycler =====
-(function setupCompanyCycle() {
-  const el = document.getElementById('companyCycle');
-  if (!el) return;
-
-  const companies = [
-    'Amazon Robotics',
-    'Docusign',
-    'Snowflake',
-    'Blue Origin',
-    'SpaceX',
-    'Anduril',
-    'Lockheed Martin',
-    'The National Weather Service',
-    'Boeing'
-  ];
+// ===== About slideshow =====
+(function setupSlideshow() {
+  const slides = Array.from(document.querySelectorAll('.slideshow .slide'));
+  if (!slides.length) return;
 
   let idx = 0;
-  el.textContent = companies[idx];
-
-  const intervalMs = 2200;
+  const intervalMs = 3200;
 
   setInterval(() => {
-    el.classList.add('is-fading');
-
-    setTimeout(() => {
-      idx = (idx + 1) % companies.length;
-      el.textContent = companies[idx];
-      el.classList.remove('is-fading');
-    }, 260);
+    slides[idx].classList.remove('active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('active');
   }, intervalMs);
 })();
 
