@@ -145,6 +145,12 @@ if (consultationForm) {
     e.preventDefault(); // prevents POST navigation to GitHub Pages (fixes 405)
 
     const btn = consultationForm.querySelector('button[type="submit"]');
+    const pageLoadTime = Date.now();
+
+    if (Date.now() - pageLoadTime < 2000) {
+    // likely a bot, silently fail
+    return;
+    }
     const originalText = btn ? btn.textContent : 'Send';
 
     if (btn) {
@@ -181,6 +187,5 @@ if (consultationForm) {
     }
   });
 }
-
 
 }
