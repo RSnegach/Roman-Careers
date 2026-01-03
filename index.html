@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roman Early Careers</title>
-  <meta name="description" content="Early career advising, resume reviews, and interview preparation." />
+  <meta name="description" content="Early-career advising, resume reviews, and interview preparation." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +22,8 @@
 
       <ul class="nav-menu">
         <li><a href="#services">Services</a></li>
-        <li><a href="#consultation">Consultation</a></li>
-        <li><a href="#consultation" class="btn-primary-small">Get Started</a></li>
+        <li><a href="#book-now">Book Now</a></li>
+        <li><a href="#book-now" class="btn-primary-small">Book Now</a></li>
       </ul>
 
       <button class="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -47,7 +47,7 @@
 
       <div class="hero-cta">
         <a href="#services" class="btn-primary">View Services</a>
-        <a href="#consultation" class="btn-secondary">Free Consultation</a>
+        <a href="#book-now" class="btn-secondary">Book Now</a>
       </div>
     </div>
   </section>
@@ -68,7 +68,7 @@
             <li>Written feedback</li>
             <li>ATS optimization</li>
           </ul>
-          <a href="#consultation" class="btn-service">Get Started</a>
+          <a href="#book-now" class="btn-service">Book Now</a>
         </div>
 
         <div class="service-card featured">
@@ -81,7 +81,7 @@
             <li>Behavioral + technical practice</li>
             <li>Personal feedback plan</li>
           </ul>
-          <a href="#consultation" class="btn-service">Get Started</a>
+          <a href="#book-now" class="btn-service">Book Now</a>
         </div>
 
         <div class="service-card">
@@ -93,27 +93,38 @@
             <li>LinkedIn + outreach strategy</li>
             <li>Offer planning</li>
           </ul>
-          <a href="#consultation" class="btn-service">Get Started</a>
+          <a href="#book-now" class="btn-service">Book Now</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONSULTATION (FORM + CALENDLY) -->
-  <section id="consultation" class="consultation">
+  <!-- BOOK NOW (FORM + CALENDLY IN ONE TAB/SECTION) -->
+  <section id="book-now" class="book-now">
     <div class="container">
-      <h2 class="section-title">Free Consultation</h2>
-      <p class="section-subtitle">Fill out the form or book directly on the calendar.</p>
+      <h2 class="section-title">Book Now</h2>
+      <p class="section-subtitle">Pick a time on the calendar and/or send details below.</p>
 
-      <div class="consultation-grid">
-        <!-- Netlify Form -->
-        <div class="consultation-form">
+      <div class="book-now-grid">
+        <!-- CALENDLY -->
+        <div class="book-now-card">
+          <h3 class="card-title">Schedule</h3>
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/evrika360/30min"
+            style="min-width:320px;height:720px;"
+          ></div>
+        </div>
+
+        <!-- NETLIFY FORM -->
+        <div class="book-now-card">
+          <h3 class="card-title">Request Details</h3>
+
           <form
             name="consultation"
             method="POST"
             data-netlify="true"
             netlify-honeypot="bot-field"
-            action="/thank-you.html"
             class="contact-form"
           >
             <input type="hidden" name="form-name" value="consultation" />
@@ -144,20 +155,20 @@
 
             <div class="form-group">
               <label for="comments">Additional Comments</label>
-              <textarea id="comments" name="comments" rows="4" placeholder="Tell me what you're applying for and what you want help with."></textarea>
+              <textarea
+                id="comments"
+                name="comments"
+                rows="5"
+                placeholder="What are you applying for, and what do you want help with?"
+              ></textarea>
             </div>
 
-            <button type="submit" class="btn-primary">Submit Request</button>
+            <button type="submit" class="btn-primary">Submit</button>
           </form>
-        </div>
 
-        <!-- Calendly embed -->
-        <div class="consultation-calendar">
-          <div
-            class="calendly-inline-widget"
-            data-url="https://calendly.com/your-link"
-            style="min-width: 320px; height: 650px;"
-          ></div>
+          <p class="fineprint">
+            If you already booked a time above, this form helps me prep before we meet.
+          </p>
         </div>
       </div>
     </div>
@@ -175,7 +186,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#services">Services</a></li>
-          <li><a href="#consultation">Consultation</a></li>
+          <li><a href="#book-now">Book Now</a></li>
           <li><a href="#top">Top</a></li>
         </ul>
       </div>
