@@ -9,6 +9,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  base-uri 'self';
+  form-action https://formspree.io;
+  frame-src https://calendly.com https://*.calendly.com;
+  script-src 'self' https://assets.calendly.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src https://fonts.gstatic.com;
+  img-src 'self' data:;
+  connect-src https://formspree.io;
+  object-src 'none';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
 </head>
 
 <body>
@@ -372,10 +389,10 @@
     <label for="service">Service Interested In *</label>
     <select id="service" name="service" required>
       <option value="">Select a service</option>
-      <option value="Resume Review">Resume Review</option>
-      <option value="Interview Prep">Interview Prep</option>
-      <option value="Career Accelerator">Career Accelerator</option>
-      <option value="Group Workshops">Group Workshops</option>
+      <option value="Resume Package">Resume Review</option>
+      <option value="Interview Package">Interview Prep</option>
+      <option value="Career Package">Career Accelerator</option>
+      <option value="Peer Workshops">Group Workshops</option>
       <option value="Not Sure Yet">Not Sure Yet</option>
     </select>
   </div>
