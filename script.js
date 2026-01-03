@@ -31,21 +31,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ===== Form UX (Netlify handles submission) =====
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', () => {
-    const button = contactForm.querySelector('button[type="submit"]');
-    if (!button) return;
+/* ============================================================
+   FORM (Formspree + GitHub Pages safe redirect)
+   IMPORTANT:
+   - Your form element must have: id="consultation-form"
+   - Your form action must be: https://formspree.io/f/REALFORMID
+   - Delete any other submit handlers (especially old Netlify UX)
+============================================================ */
+const consultationForm = document.getElementById('consultation-form');
 
-    const originalText = button.textContent;
-    button.textContent = 'Sending...';
-    button.disabled = true;
+if (consultationForm) {
+  consultationForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // prevents POSTing to thank-you.html (405)
 
-    setTimeout(() => {
-      button.textContent = originalText;
-      button.disabled = false;
-    }, 3000);
+    const btn = consultationForm.querySelector('button[type="submit"]');
+    const originalText = btn ? btn.textContent : 'Send';
+
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+    }
+
+    try {
+      const res = await fetch(consultationForm.action, {
+        method: 'POST',
+        body: new FormData(consultationForm),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!res.ok) {
+        // Try to surface Formspree error details
+        let detail = '';
+        try {
+          const data = await res.json();
+          detail = data?.errors?.map(e => e.message).join(' ') || '';
+        } catch {}
+        throw new Error(`Formspree returned ${res.status}. ${detail}`.trim());
+      }
+
+      // Success: client-side redirect (free tier compatible)
+      window.location.href = 'thank-you.html';
+    } catch (err) {
+      console.error(err);
+      alert(`Submit failed: ${err.message || err}`);
+
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    }
   });
 }
 
@@ -122,70 +156,4 @@ if ('IntersectionObserver' in window) {
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
   });
-
-  // ===== Button shine: trigger per-button, not "sticky hover" =====
-document.querySelectorAll('.btn-service').forEach((btn) => {
-  btn.addEventListener('mouseenter', () => {
-    // restart animation cleanly
-    btn.classList.remove('shine');
-    // force reflow so animation restarts reliably
-    void btn.offsetWidth;
-    btn.classList.add('shine');
-
-    // remove after animation finishes
-    window.setTimeout(() => btn.classList.remove('shine'), 650);
-  });
-});
-
-// ===== Formspree submit (GitHub Pages safe) =====
-const consultationForm = document.getElementById('consultation-form');
-
-if (consultationForm) {
-  consultationForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // prevents POST navigation to GitHub Pages (fixes 405)
-
-    const btn = consultationForm.querySelector('button[type="submit"]');
-    const pageLoadTime = Date.now();
-
-    if (Date.now() - pageLoadTime < 2000) {
-    // likely a bot, silently fail
-    return;
-    }
-    const originalText = btn ? btn.textContent : 'Send';
-
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-    }
-
-    try {
-      const res = await fetch(consultationForm.action, {
-        method: 'POST',
-        body: new FormData(consultationForm),
-        headers: { Accept: 'application/json' },
-      });
-
-      if (res.ok) {
-        // This is a GET request (works on GitHub Pages)
-        window.location.assign('thank-you.html');
-        return;
-      }
-
-      // If Formspree rejects
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = originalText;
-      }
-      alert('Submission failed. Please try again.');
-    } catch (err) {
-      // Network / blocked / offline
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = originalText;
-      }
-      alert('Network error. Please try again.');
-    }
-  });
-}
-
 }
